@@ -33,7 +33,9 @@ class Solution:
             if i == n:
                 # must have been some cut at n-1 to get here
                 return 0
-            ans = n
+            ans = n # has to be large, handles partial paritions
+            # that don't hit the base case
+
             # ans = min: for j where i..j is palin => 1 + f(j+1)
             for j in range(i, n):
                 if pal[i][j]:
