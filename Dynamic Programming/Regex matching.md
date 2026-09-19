@@ -74,3 +74,43 @@ class Solution:
 - the base condition
 - suffix style
 - taking firstMatch out
+
+## A variation: Wildcard matching
+
+In this one, instead of ".\*" it changes to just "\*"
+
+Now while the worst case theoretical complexity remains the same, a compression helps
+avoid many redundant states.
+
+```python
+from functools import cache
+from itertools import groupby
+
+
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        # optim: compress consecutive stars into one ahead of time
+        p = "".join("*" if k == "*" else "".join(g) for k, g in groupby(p))
+        sn, pn = len(s), len(p)
+
+        @cache
+        def f(si, pi):
+            if pi == pn:
+                return si == sn
+
+            matchOne = si < sn and (p[pi] == "?" or p[pi] == s[si])
+            if matchOne:
+                return f(si + 1, pi + 1)
+
+            if p[pi] == "*":
+                # matchMany case
+                # match 0
+                match = f(si, pi + 1)
+                # match atleast 1
+                match = match or si < sn and f(si + 1, pi)
+                return match
+
+            return False
+
+        return f(0, 0)
+```
