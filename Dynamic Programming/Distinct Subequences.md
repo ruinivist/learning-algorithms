@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/distinct-subsequences/
+---
+
 # Distinct Subsequences ( Count )
 
 Count of subsequences of s which equal to t

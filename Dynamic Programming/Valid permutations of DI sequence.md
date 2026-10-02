@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/valid-permutations-for-di-sequence/
+---
+
 # Valid permutations of DI sequence
 
 D = a(i) > a(i+1) and I = a(i) < a(i+1)

@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/sum-of-distances-in-tree/
+---
+
 # Sum of distances in tree
 
 arr(i) = sum dist(i,j) for all j

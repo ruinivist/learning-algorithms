@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/russian-doll-envelopes/
+---
+
 # Russian Doll Envelopes
 
 Given n rectangles, you can put one inside another if both h and w are stricly smaller.

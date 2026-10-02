@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/longest-valid-parentheses/
+---
+
 # Longest Valid Parantheses
 
 **Parantheses ~ stack**, with you just matching and popping till you can.

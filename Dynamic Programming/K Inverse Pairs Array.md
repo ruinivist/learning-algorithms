@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/k-inverse-pairs-array/
+---
+
 # K Inverse Pairs Array
 
 An inverse pair is just an inversion, pair being the (i,j) index pair.

@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/numbers-at-most-n-given-digit-set/
+---
+
 # Numbers at most n given digit set
 
 Set of digits given, no 0 in them. Can repeat.

@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/remove-boxes/
+---
+
 # Remove Boxes
 
 A list of integers. In one move you can pick a contiguous range of same numbers,

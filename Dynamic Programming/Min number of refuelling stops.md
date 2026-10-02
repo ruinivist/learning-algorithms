@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/minimum-number-of-refueling-stops/
+---
+
 # Min number of refueling stops
 
 (pos, fuel) tuples, you starts with start fuel. If you stop it's one move and you get all the fuel

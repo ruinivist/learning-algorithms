@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/coin-path/
+---
+
 # Coin Path
 
 You have a max jump distance d.

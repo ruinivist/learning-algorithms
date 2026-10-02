@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/trapping-rain-water/
+---
+
 # Trapping rainwater
 
 It is more closer to two pointers, in style, but we do keep accumulated state info

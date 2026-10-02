@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/scramble-string/
+---
+
 # Scramble String
 
 the problem statement itself makes it an obvious recursion, imagine a tree like

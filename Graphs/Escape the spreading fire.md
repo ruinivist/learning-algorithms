@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/escape-the-spreading-fire/
+---
+
 # Escape the spreading fire
 
 2d grid with 0 = grass, 1 is fire and 2 is a wall. I've at top left (0,0) and need to reach

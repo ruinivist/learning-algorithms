@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/freedom-trail/
+---
+
 # Freedom Trail
 
 The problem is simple, in fact deceptively simple.

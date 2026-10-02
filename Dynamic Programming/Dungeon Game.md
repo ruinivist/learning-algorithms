@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/dungeon-game/
+---
+
 # Dungeon Game
 
 Grid of numbers, move from top left to bottom right but the problem is health

@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/split-array-with-same-average/
+---
+
 # Split Array with Same Average
 
 Can you split an array into two non-empty halves such that average on both is same?

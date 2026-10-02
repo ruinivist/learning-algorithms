@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/race-car/
+---
+
 # Race Car
 
 In one move, you can do `x += speed, speed *= 2` OR `speed = 1 * flip sign`.

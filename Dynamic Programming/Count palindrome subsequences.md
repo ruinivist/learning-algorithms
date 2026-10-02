@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/count-different-palindromic-subsequences/
+---
+
 # Count palindrome subsequences
 
 It's same as the title, simple problem description for once.

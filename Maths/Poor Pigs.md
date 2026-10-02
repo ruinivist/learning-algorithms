@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/poor-pigs/
+---
+
 # Poor Pigs
 
 n buckets, one is poison

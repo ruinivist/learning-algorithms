@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/encode-string-with-shortest-length/
+---
+
 # Encode string with shortest length
 
 this is just run length encoding of a string.

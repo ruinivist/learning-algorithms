@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/maximal-rectangle/
+---
+
 # Maximal Rectangle ( Histogram )
 
 A very common idea in "binary grid" and finding largest rectangle or square in those.

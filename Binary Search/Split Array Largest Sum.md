@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/split-array-largest-sum/
+---
+
 # Split Array Largest Sum
 
 split into k subarrays such that the max sum across subarrays is minimum

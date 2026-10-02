@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/shortest-path-visiting-all-nodes/
+---
+
 # Shortest path visiting all nodes
 
 ~~classic hamiltonian path one~~

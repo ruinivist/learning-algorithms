@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
+---
+
 # Min swaps to make seqs increasing.
 
 Two sequences a and b, you can do swap(a(i), b(i)) and this counts as 1 move.

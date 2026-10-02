@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/escape-the-ghosts/
+---
+
 # Escape the ghosts
 
 2d grid. I start at (0,0) and need to reach target. There are multiple ghosts on the way.

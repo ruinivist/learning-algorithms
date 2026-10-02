@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/maximum-vacation-days/
+---
+
 # Maximum Vacation Days
 
 `flights[i][j] = 1` means you can fly from city `i` to city `j`, and `days[i][week]` gives the vacation days available in city `i` that week.  

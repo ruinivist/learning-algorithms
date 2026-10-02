@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/
+---
+
 # Maximum sum of three subarrays
 
 Partition into three non overlapping, subarrays of lenth k such that the total sum across is the

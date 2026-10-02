@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/burst-balloons/
+---
+
 # Burst Balloons
 
 the signature interval dp problem ( well one of the signatures atleast )

@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/binary-tree-maximum-path-sum/
+---
+
 # Binary Tree Maximum Path Sum
 
 it's the classic one where you optimise over a global and return needed stuff from

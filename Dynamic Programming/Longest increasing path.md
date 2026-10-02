@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/longest-increasing-path-in-a-matrix/
+---
+
 # Longest increasing path
 
 In a grid, start from anywhere end at anywhere, find the longest increasing path.

@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/word-break-ii/
+---
+
 # Word Break II
 
 what you need is a fast check for if i...j is in dictionary, the rest is same

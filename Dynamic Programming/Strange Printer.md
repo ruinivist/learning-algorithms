@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/strange-printer/
+---
+
 # Strange Printer
 
 In one move you can assign the same char to any subrange. Number of moves to make a string s from "".

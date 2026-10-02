@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/palindrome-partitioning-ii/
+---
+
 # Palindrome Partitioning II
 
 You can just keep on extending ranges and minimising over the cuts, a fast

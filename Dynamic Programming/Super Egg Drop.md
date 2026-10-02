@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/super-egg-drop/
+---
+
 # Super Egg Drop
 
 The problem is famous, especially the 2 egg 100 floor version of it.

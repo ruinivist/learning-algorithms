@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/count-the-repetitions/
+---
+
 # Count the repetitions
 
 really bad statement for the problem but here is the simplied one.

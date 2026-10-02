@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/arithmetic-slices-ii-subsequence/
+---
+
 # Arithemetic Slices II - Subsequence
 
 How many AM subsequences are there in the list?

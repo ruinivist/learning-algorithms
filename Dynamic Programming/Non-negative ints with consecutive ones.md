@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/non-negative-integers-without-consecutive-ones/
+---
+
 # Non-negative ints with consecutive ones
 
 Count of ints in [0,n] such that binary rep has no consuecitve 1s.

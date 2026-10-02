@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/minimum-window-subsequence/
+---
+
 # Minimum window subsequence
 
 Find min size window in S suich that T is a subsequence of that window.

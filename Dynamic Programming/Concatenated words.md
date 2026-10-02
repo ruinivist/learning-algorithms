@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/concatenated-words/
+---
+
 # Concatenated words
 
 for a words list, find all words such they are combination of other words in the list.

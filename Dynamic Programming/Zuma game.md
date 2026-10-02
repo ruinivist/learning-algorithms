@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/zuma-game/
+---
+
 # Zuma game
 
 Zuma game is matching consecutive balls of the same color, 3 or more to delete them.

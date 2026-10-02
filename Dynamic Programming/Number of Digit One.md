@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/number-of-digit-one/
+---
+
 # Number of Digit One
 
 cannot be a more obvious digit dp problem

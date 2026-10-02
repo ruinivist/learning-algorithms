@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/decode-ways-ii/
+---
+
 # Decode Ways II
 
 You havea lossy encoding. A -> ord(A) = 1, also \* = any from 1 to 9 ( not 0 ).

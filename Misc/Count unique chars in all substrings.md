@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string/
+---
+
 # Count unique chars in all substrings.
 
 Basically for all substrings t of s, count += len(set(t))

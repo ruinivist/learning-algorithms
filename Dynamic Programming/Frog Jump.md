@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/frog-jump/
+---
+
 # Frog Jump
 
 the only thing worth nothing is the python @cache usage

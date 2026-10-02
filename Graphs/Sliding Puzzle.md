@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/sliding-puzzle/
+---
+
 # Sliding Puzzle
 
 2x3 grid where we want to go from state A to B.

@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/paint-house-ii/
+---
+
 # Paint House II
 
 ## Problem

@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/profitable-schemes/
+---
+
 # Profitable Schemes
 
 n members. crimes = list of (profit i, count i members needed). Cannot reuse members.

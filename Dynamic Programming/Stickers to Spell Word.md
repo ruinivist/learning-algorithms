@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/stickers-to-spell-word/
+---
+
 # Stickers to Spell Word
 
 Make a subset with infinite possible duplicates and then if I can make a given string from

@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/regular-expression-matching/
+---
+
 # Regex matching
 
 If you take note of these things, the solution naturally follows

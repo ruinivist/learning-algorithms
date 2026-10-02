@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/cat-and-mouse/
+---
+
 # Cat and mouse
 
 Undirected graph. Cat starts at 2, mouse at 1, and 0 is hole.

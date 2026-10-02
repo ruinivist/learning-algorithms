@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/student-attendance-record-ii/
+---
+
 # Student Attendance Record II
 
 Find number of strings with count of As <=1 and no more than 2 consectutive Ls.

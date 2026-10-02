@@ -1,3 +1,7 @@
+---
+leetcode_url: https://leetcode.com/problems/optimal-account-balancing/
+---
+
 # Optimal account balancing
 
 So you have tuples like (from, to, debt)
