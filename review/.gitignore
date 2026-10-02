@@ -1,0 +1,7 @@
+# Local credentials
+.env*
+!.env.example
+
+# Personal submission history and generated rankings
+/submissions.json
+/ranking.md
