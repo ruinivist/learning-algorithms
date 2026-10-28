@@ -91,6 +91,9 @@ Let's analyse how many d can exist for a given i. Previously we just did a cross
 and it is indeed true that there can be O(n^2) such differences so that state naively looks to be still
 n^3.
 
+**in f(i,d), i and d are not independent dimensons. For seq ending at i, possible d can only be
+from j < i hence bounded by ~i**
+
 But those two are clubbed.
 dp(0,...) <= 0 as we don't have any j
 dp(1,...) <= 1 as we have just 1 sized prefix
