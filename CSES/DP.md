@@ -6,22 +6,23 @@ date: 19Jul26
 
 ## Dice Combinations
 
-### way to make sum n by using a(i) repeatedly -> what is f?
+### way to make sum $n$ by using $a(i)$ repeatedly -> what is $f$?
 
-- **defn**: f(i) = no of throws to make i
-- **base**: f(<=0) = 1
-- **trans**: f(i) = sum over throw in 1..6 : f(i-throw)
+- **defn**: $f(i)$ = no of ways to make sum $i$
+- **base**: $f(0) = 1$, $f(i) = 0$ for $i < 0$
+- **trans**: $f(i) = \sum_{\text{throw}=1}^{6} f(i-\text{throw})$
 
 ---
 
 ## Min Coins
 
-### min number of a(i) needed ( rep ) to make sum n
+### min number of $a(i)$ needed ( rep ) to make sum $n$
 
 Problem is framed as coins
-- **def**: min no of coins needed
-- **base**: f(<=0) = 0
-- **trans**: f(i) = 1 + min{ f(i-coin) foreach coin  s.t. i-coin >=0  }
+
+- **def**: $f(i)$ = min no of coins needed to make sum $i$
+- **base**: $f(0) = 0$, $f(i) = +\infty$ for $i < 0$ (and unreachable sums)
+- **trans**: $f(i) = 1 + \min\{f(i-\text{coin})\mid \text{coin},\ i-\text{coin}\ge 0\}$
 
 ### implementation tricks
 
@@ -31,54 +32,53 @@ Problem is framed as coins
 
 ## Coin Combinations 1
 
-### distinct ways to make sum n from a(i)
+### distinct ways to make sum $n$ from $a(i)$
 
 **same as 1**
-distinct is just that 1 + 2 is different from 2 + 1 which is what 1 has too
+distinct is just that $1 + 2$ is different from $2 + 1$ which is what 1 has too
 
 ---
 
 ## Coin Combinations 2
 
-### distinct "combinations" to make sum n using a(i)
+### distinct "combinations" to make sum $n$ using $a(i)$
 
-1 + 2 is same as 2 + 1
+$1 + 2$ is same as $2 + 1$
 
 **idea**: _sort_ and loop over coins first
 
-- **def**: f(i) = no of ways
-- **base**: f(0) = 1
-- **trans**: for coin c, for sum x: f(i) += f(i-c) s.t. i-c >= 0
+- **def**: $f(i)$ = no of ways
+- **base**: $f(0) = 1$
+- **trans**: for coin $c$, for sum $x$ ascending: $f(x) \mathrel{+}= f(x-c)$ s.t. $x-c \ge 0$
 
 ---
 
 ## Removing Digits
 
-### given n, n' = n - some digit of n, needed min steps to make 0
+### given $n$, $n' = n - \text{some digit of } n$, needed min steps to make $0$
 
 First doubt I had was that this cannot be done iterative. But that's easy.
 
-- **def**: f(i) = min steps to make i
-- **base**: f(0) = 0
-- **trasn**: f(i) = min{ i - d for each digit in i }
-- **order**: calc f(i) from 1 to n
+- **def**: $f(i)$ = min steps to make $i$
+- **base**: $f(0) = 0$
+- **trasn**: $f(i) = 1 + \min\{f(i-d)\mid d\text{ is a nonzero digit in }i\}$
+- **order**: calc $f(i)$ from $1$ to $n$
 
 ### Alt greedy solution
 
-**idea**: always subtract largest since f(i) is increasing in nature as i increases
+**idea**: always subtract largest since $f(i)$ is increasing in nature as $i$ increases
 
 **why correct**:
 Induction:
-- base: f(0)<f(1)<=f(2)
-- for k and k+1, I assume it holds for k
 
-example: 24 -> 25 digit to be substracted increases by 1
-example: 29 -> 30 digit to be subtracted ( 3 ) increase by 1
+- base: $f(0)<f(1)\le f(2)$
+- for $k$ and $k+1$, I assume it holds for $k$
 
-this at the surface means I have a better subtraction if I go up
-n - (d+1) = (n-1) - d
-so even if I go up, I would end up at the same number
-for above n = 30, d = 2, so 30 - (3) = 29 - 2
+example: $24 \to 25$ largest digit increases from $4$ to $5$
+example: $29 \to 30$ largest digit decreases from $9$ to $3$
+
+Let $d(i)$ be the largest digit of $i$. Since $d(i+1)\le d(i)+1$, we have $(i+1)-d(i+1)\ge i-d(i)$.
+So the greedy next state is nondecreasing, and by induction $f(i)$ is nondecreasing; subtracting the largest digit is optimal.
 
 ---
 
@@ -92,18 +92,18 @@ trivial
 
 ## Bookshop
 
-### N^2 knapsack ( 1 use items )
+### $0/1$ knapsack ( 1 use items )
 
-two attributes, maximise one, constraint other by <= .
-I was initially tricked by the O(nx) being 10^6 but that's fine apparently
+two attributes, maximise one, constraint other by $\le$ .
+I was initially tricked by the $O(nx)$ being $10^8$ but that's fine apparently
 
 vars are usually val and wt
 
-**def**: f(i,w) : max val using first i s.t. total weight <= w
-**base**: f(0,any) = 0
-**trans**: loop over items, loop over weights : f(i,w) = max(this, val + f(i-1,w-item)) where w-item >= 0
+**def**: $f(i,w)$ : max val using first $i$ s.t. total weight $\le w$
+**base**: $f(0,\text{any}) = 0$
+**trans**: loop over items, loop over weights : $f(i,w) = \max(f(i-1,w),\ \text{val}_i + f(i-1,w-\text{wt}_i))$ when $w-\text{wt}_i \ge 0$; otherwise $f(i,w)=f(i-1,w)$
 
-**impl trick**: can just use a dp(wt) array and overwrite from right to left ( as 1 use )
+**impl trick**: can just use a $dp(wt)$ array and overwrite from right to left ( as 1 use )
 
 ```c++
 #include <bits/stdc++.h>
@@ -137,13 +137,13 @@ int main() {
 
 ## Array Description
 
-### a(i) = 0 to m ( m <= 100 ), constraint abs(a(i)-a(i+1))<=1, 0 means a(i) can be 1 to m anything. Count num arrays
+### $a(i) \in \{0,\ldots,m\}$ ( $m \le 100$ ), constraint $\lvert a(i)-a(i+1)\rvert\le 1$ after filling zeroes, $0$ means $a(i)$ can be $1$ to $m$ anything. Count num arrays
 
-O(nm) solution is obvious
+$O(nm)$ solution is obvious
 
-- **def**: f(i,m) = ith value, filled with m, no of ways
-- **base**: f(1,j) = 1 if a(1) == 0 || a(1) == j
-- **trans**: f(i,j) = f(i-1,k) where k = valid values based on a(j)
+- **def**: $f(i,j)$ = no of ways to fill the first $i$ values with the $i$th value equal to $j$
+- **base**: $f(1,j) = 1$ if $a(1)=0$ or $a(1)=j$; otherwise $0$
+- **trans**: $f(i,j) = \sum_{k=\max(1,j-1)}^{\min(m,j+1)} f(i-1,k)$ if $a(i)=0$ or $a(i)=j$; otherwise $0$
 
 There is an active window optimisation that does a better average case run time but same worst.
 There is also some sparse window optims in case array has a lot of zeroes.
@@ -152,27 +152,29 @@ There is also some sparse window optims in case array has a lot of zeroes.
 
 ## Counting Towers
 
-### unlim supply of int x int towers, now of ways to build a h x 2 tower
+### unlim supply of int x int towers, now of ways to build a $h \times 2$ tower
 
-- **def**: f(n,2): built upto height n ( flat top ) such that the last row is joined (0), broken (1)
-- **base**: f(1,0) = f(1,1) = 1
+- **def**: $f(n,s)$: built upto height $n$ ( flat top ) such that the last row is joined ($s=0$), broken ($s=1$)
+- **base**: $f(1,0) = f(1,1) = 1$
 
 **trans**
 
 when joined:
-place a broken split -> to 1 with f(i-1) ways
-place a joined split -> to 0 with f(i-1) ways
-extend the join -> to 0 with f(i-1) ways
+place a broken split -> to 1 with $f(i-1,0)$ ways
+place a joined split -> to 0 with $f(i-1,0)$ ways
+extend the join -> to 0 with $f(i-1,0)$ ways
 
-so to 1 -> f(i-1) ways
-to 0 -> 2f(i-1) ways
+so to 1 -> $f(i-1,0)$ ways
+to 0 -> $2f(i-1,0)$ ways
 
 when broken:
 the first two above repeat ( they are basically you don't extend the segments )
-extend the split -> to 1, only left, only right or both => 3*f(i-1) ways
+extend the split -> to 1, only left, only right or both => $3\cdot f(i-1,1)$ ways
 
-so to 1 in 4f(i-1) ways
-to 0 in f(i-1) ways
+so to 1 in $4f(i-1,1)$ ways
+to 0 in $f(i-1,1)$ ways
+
+Hence $f(i,0)=2f(i-1,0)+f(i-1,1)$ and $f(i,1)=f(i-1,0)+4f(i-1,1)$.
 
 ---
 
@@ -180,9 +182,9 @@ to 0 in f(i-1) ways
 
 ### edit distance (ops are: del from a, del from b, convert some char to other)
 
-- **def**: f(i,j) = edit dist for prefix len i and prefix len j
-- **base**: f(0,j) = j, f(i,0) = i
-- **trans**: for i, for j : f(i,j) = min{ f(i-1,j), f(i,j-1), f(i-1,j-1) + a(i-1)!=b(j-1) }
+- **def**: $f(i,j)$ = edit dist for prefix len $i$ and prefix len $j$
+- **base**: $f(0,j) = j$, $f(i,0) = i$
+- **trans**: for $i$, for $j$ : $f(i,j) = \min\{1+f(i-1,j),\ 1+f(i,j-1),\ f(i-1,j-1) + (a(i-1)\ne b(j-1))\}$
 
 ---
 
@@ -192,9 +194,9 @@ to 0 in f(i-1) ways
 
 similar to edit dist
 
-- **def**: f(i,j) : length of lcs using prefix of len i, and prefix of len j
-- **base**: f(i,0) = f(0,j) = 0
-- **trans**: for i, for j : if a(i-1) == b(j-1) 1 + f(i-1,j-1) else max( f(i-1,j), f(i,j-1) )
+- **def**: $f(i,j)$ : length of lcs using prefix of len $i$, and prefix of len $j$
+- **base**: $f(i,0) = f(0,j) = 0$
+- **trans**: for $i$, for $j$ : if $a(i-1) = b(j-1)$ $1 + f(i-1,j-1)$ else $\max(f(i-1,j),\ f(i,j-1))$
 
 **print**: visualise the 2d grid, row, col,
 if both same both decrease else go in the direction where lcs remains max
@@ -250,21 +252,21 @@ int main() {
 
 ## Rectangle Cutting
 
-### a x b, can cut horizontally or vertically, min cuts to make all cuts squares
+### $a \times b$, can cut horizontally or vertically, min cuts to make all cuts squares
 
-**O(n^3)**
+**$O(ab(a+b))$** ( $O(n^3)$ when $a,b=O(n)$ )
 
-this is not dp just brute force and mem
+this is dp via brute force cuts and mem
 
-- **def**: f(i,j) ans for i,j
-- **base**: f(i,0) = f(0,j) = 0, rest = INF
+- **def**: $f(i,j)$ ans for $i,j$
+- **base**: $f(i,i) = 0$ (square); initialise non-square states to $\mathrm{INF}$
 
 **trans**: for i, for j
-if i==j, that's square, f(i,j) is 0
+if $i==j$, that's square, $f(i,j)$ is $0$
 else
-f(i,j) = min self with
-	for horizontal cut : f(x,j) + f(i-x,j) + 1
-	for verti cut      : f(i,y) + f(i,j-u) + 1
+$f(i,j)$ = min self with
+for horizontal cut : $f(x,j) + f(i-x,j) + 1$
+for verti cut : $f(i,y) + f(i,j-y) + 1$
 
 ```c++
 #include <bits/stdc++.h>
@@ -374,15 +376,15 @@ int main() {
 
 ## Money Sums
 
-### n integers, num of distinct sums possible ( n ~ 100, a(i) ~ 1000 )
+### $n$ integers, num of distinct sums possible ( $n \sim 100$, $a(i) \sim 1000$ )
 
 **subset sum**
 
 - knapsack like iteration
 - single bool array of if possible
 
-f(0) = 1
-for each cur, for tgt (reversed) : f(tgt) |= f(tgt-cur)
+$f(0) = 1$
+for each cur, for tgt (reversed) : $f(\text{tgt})\mathrel{|}=f(\text{tgt}-\text{cur})$
 
 ```c++
 #include <bits/stdc++.h>
@@ -435,11 +437,11 @@ what u need? constant/0 sum (of scores) and symmetric rules
 trick is to instead of max score, max my - other score
 aka other's points are -ve and score is basically my sum - other sum
 
-- **def**: f(i,j) = max score (per mine - other), segment i to j
-- **base**: f(i,i) = a(i)
-- **trans**: f(i,j) = max{ v(i) + f(i-1,j), v(j) + f(i,j-1) }
+- **def**: $f(i,j)$ = max score (per mine - other), segment $i$ to $j$
+- **base**: $f(i,i) = v(i)$
+- **trans**: $f(i,j) = \max\{v(i) - f(i+1,j),\ v(j) - f(i,j-1)\}$
 
-finding score: s1 - s2 = dp ans, s1 + s2 = known constant sum
+finding score: $s_1 - s_2 = \text{dp ans}$, $s_1 + s_2 = \text{known constant sum}$
 
 **fill order**: small to large segments
 
@@ -477,9 +479,9 @@ int main() {
 
 ## Two Sets 2
 
-### num ways to partition 1..n in two sets of same sum
+### num ways to partition $1..n$ in two sets of same sum
 
-**1/0 subset sum - no of ways**
+**$0/1$ subset sum - no of ways**
 **no soln case**
 
 ---
@@ -494,15 +496,15 @@ int main() {
 
 ### method one - inversion
 
-if I jump from a higher one to a lower one, I have branching as my set is all smaller ones. For 5 1 4, I can jump from 5 to 1 and have more range later
-or to 4 and have better height too.
+if I jump from a higher one to a lower one, I have branching as my set is all smaller ones. For $5\ 1\ 4$, I can jump from $5$ to $1$ and have more range later
+or to $4$ and have better height too.
 
-**inversion**, instead jump from 1 and look to go higher, greedy is best, you always want to go the next higher to the left or right, so once you
-are on u, you know you can only go left or right the next higher => dp must end at u
+**inversion**, instead jump from $1$ and look to go higher, greedy is best, you always want to go the next higher to the left or right, so once you
+are on $u$, you know you can only go left or right the next higher => dp must end at $u$
 
-- **def**: dp(u) => max range ending at u
-- **base**: dp(u) = 1
-- **trans**: in dec heights ( so sort ), dp(u) = max{ self, 1 + dp(left higher), dp(right higher) }
+- **def**: $dp(u)$ => max range ending at $u$
+- **base**: $dp(u) = 1$
+- **trans**: in dec heights ( so sort ), $dp(u) = \max\{\text{self},\ 1 + dp(\text{left higher}),\ 1 + dp(\text{right higher})\}$ (skip missing neighbors)
 
 ### method two - tree break + dp
 
@@ -578,7 +580,7 @@ int main() {
 
 **tails idea**
 
-f(u) = min ending element of lis of len u + 1
+$f(u)$ = min ending element of lis of len $u + 1$
 
 Idea is greedy based, for an element, you extend the range if you can ( when cur is higher and all existing ) or try to min the end of
 some existing length so that some future elem can benefit ( equivalent swap, same lenght better future possibility )
@@ -621,7 +623,7 @@ use upper bound, that's it
 
 ### prefix max optim dp
 
-usual pattern is f(j) = max f(i) for i <= some limit
+usual pattern is $f(j) = \max f(i)$ for $i \le \text{some limit}$
 
 **thinking compression? you can use sorting and indexes instead of values**
 
@@ -643,13 +645,13 @@ for (auto [time, project, is_end] : events) {
 
 ## Elevator Rides
 
-### n people, one move only allows wt sum <= W, min no of moves
+### $n$ people, one move only allows wt sum $\le W$, min no of moves
 
-**bitmask dp => n ~ <= 20**
+**bitmask dp => $n \le 20$**
 
-### 3^n trick
+### $3^n$ trick
 
-naive is => for each bitmask, for each subset (3 ^ n)
+naive is => for each bitmask, for each subset ($3^n$)
 
 ```c++
 for (int m = 0; m < (1 << N); ++m) {
@@ -659,7 +661,7 @@ for (int m = 0; m < (1 << N); ++m) {
 }
 ```
 
-### optimising to n.2^n
+### optimising to $n\cdot 2^n$
 
 maintain a greedy, similar to how lis does it.
 for a set of people, you have a fixed wt
@@ -668,7 +670,7 @@ for a set of people, you have a fixed wt
 
 ### imp trick
 
-seq min needed here, min rides, if same min over wt ( f1, f2, f3..) based on priority
+seq min needed here, min rides, if same min over wt ( $f_1, f_2, f_3..$ ) based on priority
 
 can just do min( aggregate pair/array/vector ) after making the tans entry
 
@@ -677,7 +679,7 @@ can just do min( aggregate pair/array/vector ) after making the tans entry
 ```c++
 #include <bits/stdc++.h>
 using namespace std;
- 
+
 int main() {
 #define int long long
     int n, w;
@@ -685,19 +687,19 @@ int main() {
     vector<int> v(n);
     for (int &x : v)
         cin >> x;
- 
+
     const int INF = (int)1e18 + 5;
     vector<array<int, 2>> dp(1ll << n, {INF, INF});
- 
+
     // f(i) = {min rides, min last ride wt}
     dp[0] = {1, 0}; // extend last keeping rides as 1
- 
+
     for (int i = 1; i < (1ll << n); i++) {
         for (int j = 0; j < n; j++) {
             // skip if unset
             if (!((i >> j) & 1))
                 continue;
- 
+
             auto prev = dp[i ^ (1ll << j)];
             if (prev[1] + v[j] <= w) {
                 // no new ride
@@ -707,9 +709,9 @@ int main() {
             }
         }
     }
- 
+
     cout << dp[(1ll << n) - 1][0] << "\n";
- 
+
 #undef int
 }
 ```
@@ -718,22 +720,22 @@ int main() {
 
 ## Counting Tilings
 
-### broken profile / connectivity dp :  10 x 1000 grid, way to fill with 1x2 and 2x1 grids
+### broken profile / connectivity dp : $10 \times 1000$ grid, way to fill with $1\times 2$ and $2\times 1$ grids
 
 **bitmask but dp is not subset rather the shape**
 
 **key is to process col by col and maintain a "shape"**
 
-f(i,mask) : filled till col i, mask (row size) => 1 means this cell is filled via extension frol col i-1
+$f(i,\text{mask})$ : filled through col $i-1$, mask (row size) => 1 means this cell in col $i$ is filled via extension from col $i-1$
 
-### method 1 : subset dp ( 3^n )
+### method 1 : subset dp ( $O(m3^n)$ )
 
 for each col, for each cur profile
-	prev profile = inverted
-	// now some can be filled via vertical and some need to be extensions
-	for each submask of vertical ( call that this is what's extension based )
-		vertical = complement extension
-		if vertical is valid => add
+prev profile = inverted
+// now some can be filled via vertical and some need to be extensions
+for each submask of vertical ( call that this is what's extension based )
+vertical = complement extension
+if vertical is valid => add
 
 ### code 1
 
@@ -811,6 +813,7 @@ complexity changes based on no of transitions which no depends on the tiles
 if I have this, I can just jump cols more easily
 
 ### code 2
+
 ```c++
 #include <bits/stdc++.h>
 using namespace std;
@@ -858,13 +861,13 @@ int main() {
 }
 ```
 
-### method 3: actual broken profile (mn2^n)
+### method 3: actual broken profile ($mn2^n$)
 
 moving cell by cell instead of col by col as in previous subset solution
 
 you do the same thing as moving down row by row, except in place
 
-very specific to the 1x2 as it used the marking trick
+very specific to the $1\times 2$ as it used the marking trick
 
 ### code 3
 
@@ -931,6 +934,7 @@ int main() {
 **digit dp**
 
 elements of a template
+
 - reverse
 - pos
 - tight
@@ -950,7 +954,7 @@ int dp(int pos, bool tight, bool lz, int state) {
     for (int digit = 0; digit <= limit; digit++) {
         bool new_tight = tight && (digit == limit);
         bool new_lz = lz && (digit == 0);
-        
+
         int new_state = state;
         if (!new_lz) {
             // new_state update logic
@@ -1022,13 +1026,13 @@ signed main() {
 
 ### inc seq count
 
-lis is max 1 + f(i) for a(i) < a(j). this is sum 1 + f(i) for a(i) < a(j),
+lis length uses max $1 + f(i)$ for $i<j$ with $a(i)<a(j)$. this is $1 + \sum_{i<j,\ a(i)<a(j)}f(i)$ for counting,
 
-**lis general case using ft/st**
+**increasing subsequences using ft/st**
 
-- **def**: f(i) = len/cnt of lis ending at i
-- **base**: f(i) = 1 (atleast)
-- **trans**: for i, f(i) = max self, 1 + f(j) s.t. j < i (prefix, build online) and a(j) < a(i) (coord comp)
+- **def**: $f(i)$ = count of increasing subsequences ending at $i$
+- **base**: $f(i) = 1$ (single element)
+- **trans**: for $i$, $f(i) = 1 + \sum_{j<i,\ a(j)<a(i)} f(j)$ (prefix, build online; coord comp)
 
 ### compress steps?
 
@@ -1083,4 +1087,3 @@ signed main() {
     cout << ans << '\n';
 }
 ```
-
