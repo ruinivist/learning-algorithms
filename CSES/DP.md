@@ -176,6 +176,8 @@ to 0 in $f(i-1,1)$ ways
 
 Hence $f(i,0)=2f(i-1,0)+f(i-1,1)$ and $f(i,1)=f(i-1,0)+4f(i-1,1)$.
 
+![counting towers](./counting_towers.png)
+
 ---
 
 ## Edit Distance
@@ -484,6 +486,12 @@ int main() {
 **$0/1$ subset sum - no of ways**
 **no soln case**
 
+In general for such problems, you should only know two ways, the one above and MITM.
+Problem in above is that time and space are linear to the sum as well, MITM fixed that.
+
+Idea for MITM, make two halves. General all subset sums in both halfs.
+Iterate one and search in another to find what all can be made.
+
 ---
 
 ## Mountain Range
@@ -636,7 +644,9 @@ for (auto [time, project, is_end] : events) {
 	if (is_end) {
 	    result = max(result, money[project]);
 	} else {
-	    money[project] = result + p[project];
+        // result is ONLY updated on ends, so all that result has cummulated has ended
+        // money(prject) = gain if I choose this project
+	    money[project] = result + reward[project];
 	}
 }
 ```
@@ -644,6 +654,8 @@ for (auto [time, project, is_end] : events) {
 ---
 
 ## Elevator Rides
+
+> when one state dimension can be optimized and summarized without losing information needed for future transitions, store it in the DP value rather than the DP index.
 
 ### $n$ people, one move only allows wt sum $\le W$, min no of moves
 
@@ -728,7 +740,7 @@ int main() {
 
 $f(i,\text{mask})$ : filled through col $i-1$, mask (row size) => 1 means this cell in col $i$ is filled via extension from col $i-1$
 
-### method 1 : subset dp ( $O(m3^n)$ )
+### method 1 : ~~subset dp~~ THIS is the generic broken profile ( $O(m3^n)$ )
 
 for each col, for each cur profile
 prev profile = inverted
@@ -861,7 +873,7 @@ int main() {
 }
 ```
 
-### method 3: actual broken profile ($mn2^n$)
+### method 3: ~~actual broken profile~~ this is cell by cell one, generally harder to apply so might as well skip ($mn2^n$)
 
 moving cell by cell instead of col by col as in previous subset solution
 
