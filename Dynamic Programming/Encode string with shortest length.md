@@ -29,6 +29,8 @@ so that I can merge cases like (1,abc) and 3(abc) => last from left and first fr
 the interval, I would also need to match the last and first strings, another potential O(n).
 I can do substring hashing but let's avoid that.
 
+![An interval stays raw, concatenates, or repeats an encoded period](./visuals/encode-string-choices.png)
+
 The trick to the problem is using k only as a concat boundary, you assume that the optimal
 recursion path would not split across an encoding, since we try all paths that is valid. But then
 we need to handle full string encodings.
@@ -37,6 +39,8 @@ This is what one more transition gets you. For each period p, if this period can
 string, use that. To answer this efficiently you need an lcp precomputed.
 KMP/z-algo can do this as well but let's avoid that.
 if len(lcp(s[l], s[l+p])) >= len of this range - p, then p is a valid period.
+
+![An exact period requires divisibility and a sufficiently long shifted match](./visuals/encode-string-period.png)
 
 ```python
 from functools import cache

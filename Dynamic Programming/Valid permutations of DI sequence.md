@@ -17,6 +17,8 @@ the LAST rank, say this is q. Then if you wanna append say x, all ranks >= x cur
 to shift up by one, in code that's handled implicity since it's a "constant" transform so number
 of ways don't change.
 
+![Rank insertion explains the I and D summation ranges](./visuals/di-sequence-ranks.png)
+
 ```python
 class Solution:
     def numPermsDISequence(self, s: str) -> int:

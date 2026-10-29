@@ -20,6 +20,8 @@ The problem with picking some k and splitting at that is the left and right coul
 be very different that the immediate neighbors, and in fact would depend on the state
 of things prior.
 
+![Choosing the last balloon fixes the outside neighbors](./visuals/burst-balloons-last.png)
+
 ```
 1 2 3 4
 if I pick 2, my array becomes

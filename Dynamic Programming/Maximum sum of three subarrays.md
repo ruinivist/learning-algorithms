@@ -73,6 +73,8 @@ for the 3 case and how for 3, you can iterate over middle and optim over prefix 
 
 > note that once again, you can only do it for the 3 case, atleast cleanly.
 
+![Fixing the middle window separates the left and right choices](./visuals/three-subarrays-middle.png)
+
 ```python
 class Solution:
     def maxSumOfThreeSubarrays(self, nums: list[int], k: int) -> list[int]:

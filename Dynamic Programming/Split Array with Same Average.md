@@ -20,6 +20,8 @@ if some subset exists where sum is 0.
 This then becomes a trivial subset sum IFF you handle the fractional bit nicely in impl.
 $b_i = a_i - \frac{S}{n}$, so we need to use scaled $b_i$s.
 
+![Equal averages become a nonempty proper zero-sum subset](./visuals/same-average-transform.png)
+
 ```python
 class Solution:
     def splitArraySameAverage(self, nums: list[int]) -> bool:
@@ -138,6 +140,8 @@ class Solution:
 
 With meean centering, this becomes MUCH more simple as you don't need a variable target
 compute from sizes.
+
+![Meet in the middle matches opposite nonempty subset sums](./visuals/same-average-mitm.png)
 
 ```python
 class Solution:

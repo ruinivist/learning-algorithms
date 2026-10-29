@@ -37,6 +37,8 @@ The idea is that in a bag of numbers such that all are smaller than yours. If yo
 keep the inversion same, you can move to right, if you want to increase it, you can move to
 left.
 
+![Inserting the largest element creates zero through n minus one inversions](./visuals/inverse-pairs-insertion.png)
+
 With this the naive impl is
 
 ```python
@@ -97,6 +99,8 @@ class Solution:
 ```
 
 But event this TLEs.
+
+![The inversion recurrence becomes a sliding sum on the previous row](./visuals/inverse-pairs-window.png)
 
 ```python
 class Solution:

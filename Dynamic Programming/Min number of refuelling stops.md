@@ -44,6 +44,8 @@ The way to go in this one is model it as a knapsack problem. Define value as the
 and wt as 1 for each ( 1 move ). Then you can do a dp(wt) formulation => max fuel in j stops.
 Though it's not exactly knapsack as you are accouning for reachability too.
 
+![Maximum reachable distance with a fixed number of stops](./visuals/refuel-reach-dp.png)
+
 ```python
 class Solution:
     def minRefuelStops(self, t: int, start: int, s: list[list[int]]) -> int:
@@ -58,7 +60,7 @@ class Solution:
                     # push
                     dp[j + 1] = max(dp[j + 1], dp[j] + fuel)
 
-        for j, reach in enumer-ate(dp):
+        for j, reach in enumerate(dp):
             if reach >= t:
                 return j
 
@@ -103,6 +105,8 @@ class Solution:
 This problem is more of a representative one for max heap I would say.
 Idea being you only refuel greedily when needed in the sense that when you run out, you consume
 the largest one passed in retrospect.
+
+![Retrospectively choose the largest fuel amount from passed stations](./visuals/refuel-retrospective-heap.png)
 
 ```python
 class Solution:

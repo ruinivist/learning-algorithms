@@ -11,6 +11,8 @@ Count number of digits made from that set such that they are <= n.
 
 as obvious of a digit dp problem as it can be.
 
+![Leading padding is separate from the allowed digits](./visuals/digit-set-leading-padding.png)
+
 ```python
 class Solution:
     def atMostNGivenDigitSet(self, digs: list[str], n: int) -> int:

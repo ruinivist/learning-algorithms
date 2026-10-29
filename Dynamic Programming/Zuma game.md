@@ -36,6 +36,8 @@ for elem (1), iterator over ( [1,1,1] )
 note that you cant do len(iterator), instead do len(list(iterator)) to materialise it
 ```
 
+![One insertion can trigger several successive run removals](./visuals/zuma-cascade.png)
+
 As a pruning optimisation, it makes sense to only insert at the start of a same color group.
 
 But a case exists where this leads to chainr reaction that deletes part of a long chain too fast
@@ -44,6 +46,8 @@ board = "RRWWRRBBRR" and hand = "WB"
 by breaking any of the W or B at the first step, you are left with stranged Rs of len 2.
 
 These two pruning steps are essential.
+
+![A different-color insertion can delay a collapse and preserve a winning chain](./visuals/zuma-delay-collapse.png)
 
 ```python
 import math

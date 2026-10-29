@@ -39,6 +39,8 @@ painted
 The recurrence instead should skip the current l as it'll piggyback on a future paint, that future
 paint being k ( so you MUST paint that k by a turn making the subproblem being f(k,r))
 
+![A matching later character pays for the shared printing turn](./visuals/strange-printer-shared-turn.png)
+
 ```python
 class Solution:
     def strangePrinter(self, s: str) -> int:

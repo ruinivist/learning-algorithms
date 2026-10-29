@@ -14,6 +14,8 @@ So that state compression is also possible if you write an iterative version.
 Once the state is decided the rest is easy to implement. You just iterate over the possible previous valid masks
 and max over.
 
+![Row masks encode horizontal and diagonal seating conflicts](./visuals/exam-row-masks.png)
+
 ```python
 class Solution:
     def maxStudents(self, g: list[list[str]]) -> int:

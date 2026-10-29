@@ -17,6 +17,8 @@ is not cleanly possible while keeping on state.
 Think of what I "need", what is the contribution of this cell, and what min start I can
 live with in that case.
 
+![Backward DP stores the health required before entering a cell](./visuals/dungeon-backward-health.png)
+
 ```python
 class Solution:
     def calculateMinimumHP(self, g: list[list[int]]) -> int:

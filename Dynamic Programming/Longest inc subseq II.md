@@ -14,6 +14,8 @@ then we have our solution.
 
 The hard part is just the whole of segment tree impl needed to do the range maxes.
 
+![Bounded differences require a range maximum over ending values](./visuals/lis-ii-value-range.png)
+
 ```python
 class Solution:
     def lengthOfLIS(self, nums, k):

@@ -16,8 +16,10 @@ the first gives it the state machine transitions, the second prevents a collapse
 optima for single purchase.
 
 Solving the actual problem case first, notice the "atmost" as well first.
-Let $t$ be which transaction we are on, we can only move forward when we sell. So I would
+Let $t$ count completed sales; increment it only when we sell. So I would
 need both a buy and a sell state.
+
+![Buy and sell transitions with completed-sale counting](./visuals/stocks-completed-sales.png)
 
 ```python
 class Solution:
@@ -25,19 +27,19 @@ class Solution:
         # profit on SUFFIX
         @cache
         def f(t, act, day):
-            # t -> transction count
+            # t -> number of completed sales
             # act -> action to do next
             # day -> index in prices
             if day == len(prices):
-                return 0
+                return 0 if act == "buy" else -math.inf
 
             # don't do anything
             ans = f(t, act, day + 1)
 
-            if act == "buy" and t + 1 < k:
-                ans = max(ans, f(t + 1, "sell", day + 1) - prices[day])
+            if act == "buy" and t < k:
+                ans = max(ans, f(t, "sell", day + 1) - prices[day])
             if act == "sell":
-                ans = max(ans, f(t, "buy", day + 1) + prices[day])
+                ans = max(ans, f(t + 1, "buy", day + 1) + prices[day])
 
             return ans
 

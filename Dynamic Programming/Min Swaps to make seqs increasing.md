@@ -17,6 +17,8 @@ but wasn't able to figure out the state then.
 It's simply `f(pos, prevSwapped)`, note that whether we swap current or not is what we decide
 GIVEN this state.
 
+![Only the previous swap state determines the legal current orientations](./visuals/min-swaps-two-states.png)
+
 ```python
 class Solution:
     def minSwap(self, nums1: list[int], nums2: list[int]) -> int:
