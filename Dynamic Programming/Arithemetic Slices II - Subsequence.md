@@ -118,6 +118,8 @@ the "sum" still constant you need a filter like for this (i,d) only
 iterate these j. Problem is not being able to merge the j iteration in
 recursive.
 
+![Seed length-two pairs but count only extensions to length at least three](./visuals/arithmetic-subsequence-seeds.png)
+
 ```
 from collections import defaultdict
 

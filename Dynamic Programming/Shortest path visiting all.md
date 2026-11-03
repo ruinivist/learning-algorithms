@@ -20,6 +20,8 @@ to be looping, that is fine but you are NOT meant to be looping over the same (m
 
 So this works, if you treat that as your visited.
 
+![BFS distinguishes the same node reached with different visited masks](./visuals/visit-all-state-graph.png)
+
 ```python
 class Solution:
     def shortestPathLength(self, g: list[list[int]]) -> int:

@@ -29,6 +29,8 @@ entire string in args.
 Well, one of the condition to be scrambled is that length MUST match, so what I can do
 is just use the starting indexes and the len making $(i_1,i_2,len)$ as my state.
 
+![A split compares aligned or swapped pairs of equal-length substrings](./visuals/scramble-aligned-swapped.png)
+
 ```python
 from functools import cache
 

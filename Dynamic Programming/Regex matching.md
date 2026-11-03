@@ -12,6 +12,8 @@ If you take note of these things, the solution naturally follows
 Here's the pseudocode, using **"suffix based"** memoised dp => we go from 0 to n and f(i,j) means suffixes starting from those
 positions match
 
+![A starred pattern unit either consumes nothing or consumes another matching character](./visuals/regex-star-transitions.png)
+
 ```python
 from functools import cache
 

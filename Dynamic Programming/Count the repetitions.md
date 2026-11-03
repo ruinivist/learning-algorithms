@@ -34,6 +34,8 @@ Let the state then return, if I start at j, for new full s2, what is j' and coun
 overs.
 Then I can skip the s1 iteration and just iterate n1 instead.
 
+![A source block moves the target cursor and earns completed matches](./visuals/repetitions-block-transition.png)
+
 ```python
 class Solution:
     def getMaxRepetitions(self, s1: str, n1: int, s2: str, n2: int) -> int:

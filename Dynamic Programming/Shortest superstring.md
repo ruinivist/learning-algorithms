@@ -25,6 +25,8 @@ word, I might start to append it even if it was already present.
 
 > Note, offtopic. A push dp in a recursive mem setting is just f(...) that returns "remaining"
 
+![The last word changes the next overlap even for the same subset](./visuals/superstring-last-word.png)
+
 ```python
 class Solution:
     def shortestSuperstring(self, words: list[str]) -> str:

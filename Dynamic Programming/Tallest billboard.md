@@ -39,6 +39,8 @@ $abs(left-(right+x)) = abs(abs(left-right)-x)$
 Why? left and right might get swapped on LHS to make it work.
 Think of this op on the number line and the diff change will be clearer.
 
+![The three rod choices change the absolute tower difference](./visuals/tallest-billboard-difference.png)
+
 ```python
 class Solution:
     def tallestBillboard(self, a: list[int]) -> int:

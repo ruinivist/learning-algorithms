@@ -33,6 +33,8 @@ can just be clubbed together, which is what completes the solution.
 > if you change the state to "profit still needed" then the problem shifts to handle
 > that clubbing so then you can technically write a pull dp.
 
+![Profit saturation merges equivalent future states while preserving counts](./visuals/profitable-schemes-saturation.png)
+
 ```python
 class Solution:
     def profitableSchemes(

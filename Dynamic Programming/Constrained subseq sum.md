@@ -6,6 +6,8 @@ max subset sum such that index difference of consec elements in the subseq <= k
 
 Simple problem, if you know to use mono dq to keep max in a window.
 
+![A monotone deque supplies the best valid predecessor](./visuals/constrained-sum-deque.png)
+
 ```python
 class Solution:
     def constrainedSubsetSum(self, nums: list[int], k: int) -> int:

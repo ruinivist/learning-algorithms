@@ -30,6 +30,8 @@ imbalance at one step ONLY changes by 1.
 
 > what we're doing is DECOMPOSING the input to contiguous matching ranges
 
+![The stack boundary determines the longest valid suffix](./visuals/parentheses-boundary-stack.png)
+
 ```python
 class Solution:
     def longestValidParentheses(self, s: str) -> int:

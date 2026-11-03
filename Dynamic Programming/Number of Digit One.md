@@ -32,6 +32,8 @@ class Solution:
 
 The more optimised version
 
+![A chosen one contributes once for every suffix completion](./visuals/digit-one-ways-and-ones.png)
+
 ```python
 from functools import cache
 

@@ -16,6 +16,8 @@ The approach goes like, for all masks, for all stickers, apply ticker to mask an
 There is no need to worry about duplicate stickers since the inner loop running again will pick
 it up the next time. A recursive is similar.
 
+![Each target position needs coverage, including duplicate letters](./visuals/stickers-target-mask.png)
+
 ```python
 class Solution:
     def minStickers(self, stickers: list[str], target: str) -> int:

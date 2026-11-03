@@ -23,6 +23,8 @@ transition states.
 
 > since you are iterating in a loop on hats, a collision cannot happen by virtue of ordering
 
+![Process hats in order and mask already assigned people](./visuals/hats-assignment-mask.png)
+
 ```python
 class Solution:
     def numberWays(self, hats: list[list[int]]) -> int:
