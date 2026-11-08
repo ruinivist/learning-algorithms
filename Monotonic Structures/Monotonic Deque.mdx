@@ -1,0 +1,170 @@
+---
+title: "Monotonic Deque"
+date: 18Jul26
+---
+
+# Monotonic Deque
+
+Use this when you need the best **max/min** candidate among **active** indices.
+
+## Push Template
+
+For maximum queries, keep values decreasing:
+
+```python
+def push_max(i):
+    while dq and nums[dq.back] <= nums[i]:
+        dq.pop_back()
+
+    dq.push_back(i)
+```
+
+After pushing, the best active candidate is always at `dq.front()`.
+
+## Expire Template
+
+To clean up the active set when left boundary has moved
+
+```python
+def remove_left(l):
+    if dq and dq.front < l:
+        dq.pop_front()
+```
+
+The idea is just that when a newer index has a better value than an older index, the older index can never be useful again while both are active.
+
+---
+
+# Some generalised variations
+
+## Fixed Window Extrema
+
+Use this when every query is over a fixed-size window and you need the max or
+min.
+
+### Template
+
+```python
+for r in range(n):
+    push r into monotonic deque
+
+    expire indices before r - k + 1
+
+    if r >= k - 1:
+        answer uses dq.front
+```
+
+Fixed window means the left boundary is implicit: `l = r - k + 1`.
+
+### Problems
+
+- [Sliding window maximum](https://leetcode.com/problems/sliding-window-maximum/description/)
+  - keep a decreasing deque to get the maximum of each size-`k` window
+- Sliding window minimum
+  - keep an increasing deque instead
+- [K empty slots](https://leetcode.com/problems/k-empty-slots/description/)
+  - invert to `days[]`, then find the minimum over the fixed middle window
+- Razika
+  - after sorting, use a fixed window minimum over adjacent differences to find the best internal gap
+
+---
+
+## Variable Window Max Min
+
+Use this when a variable-size window is valid based on the current max and min.
+
+### Template
+
+```python
+for r in range(n):
+    push r into max_dq
+    push r into min_dq
+
+    while max - min is invalid:
+        remove l from both deques if present
+        l += 1
+
+    update answer
+```
+
+Variable window means the left boundary is explicit and condition-driven.
+
+### Problems
+
+- [Longest continuous subarray with absolute diff less than or equal to limit](https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/description/)
+  - maintain both extrema and move `l` until `max - min <= limit`
+- [Continuous subarrays](https://leetcode.com/problems/continuous-subarrays/description/)
+  - keep `max - min <= 2`, then add `r - l + 1` to count valid subarrays ending at `r`
+- [Count partitions with max-min difference at most k](https://leetcode.com/problems/count-partitions-with-max-min-difference-at-most-k/description/)
+  - find the same left boundary, then count partitions using DP and prefix sums
+- [Count prime gap balanced subarrays](https://leetcode.com/problems/count-prime-gap-balanced-subarrays/description/)
+  - extrema deques only track prime indices; count windows with at least two primes and prime max minus prime min at most `k`
+- [Maximum number of robots within budget](https://leetcode.com/problems/maximum-number-of-robots-within-budget/description/)
+  - max deque plus running-cost sum; keep `max(charge) + len * sum(running) <= budget`
+
+---
+
+## Prefix Sum Candidates
+
+Use this when candidates are prefix indices and the deque keeps the best prefix
+sums.
+
+This is not the normal max/min window. The deque stores possible left endpoints.
+
+### Template
+
+```python
+for i in range(n + 1):
+    while dq and prefix[i] - prefix[dq.front] satisfies target:
+        update answer
+        pop front
+
+    while dq and prefix[dq.back] >= prefix[i]:
+        pop back
+
+    push i
+```
+
+The back-pop says: a newer lower prefix is always better than an older higher
+prefix.
+
+### Problems
+
+- [Shortest subarray with sum at least k](https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/description/)
+  - keep an increasing deque of prefix sums; negative values are allowed
+  - pop valid left endpoints from the front after updating the shortest length
+
+---
+
+## DP Window Optimisation
+
+Use this when a DP transition asks for min or max over a moving valid range.
+
+### Template
+
+```python
+for i in range(n):
+    expire invalid candidates from front
+
+    dp[i] uses dq.front
+
+    while dq and candidate at dq.back is worse than i:
+        pop back
+
+    push i
+```
+
+The deque stores candidate indices, not raw values.
+
+### Problems
+
+- [Constrained subsequence sum](https://leetcode.com/problems/constrained-subsequence-sum/description/)
+  - `dp[i] = nums[i] + max(0, max dp[j] in last k)`
+- [Jump game VI](https://leetcode.com/problems/jump-game-vi/description/)
+  - fixed-range maximum DP; every path must reach the last index
+- [Minimum number of coins for fruits](https://leetcode.com/problems/minimum-number-of-coins-for-fruits/description/)
+  - minimum DP over a changing valid range; buying a fruit grants a future range for free
+- [Delivering boxes from storage to ports](https://leetcode.com/problems/delivering-boxes-from-storage-to-ports/description/)
+  - minimum DP candidate under the maximum-box and maximum-weight constraints
+- [Max value of equation](https://leetcode.com/problems/max-value-of-equation/description/)
+  - maintain the maximum `yi - xi` among previous points with `xj - xi <= k`
