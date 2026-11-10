@@ -1,0 +1,20 @@
+---
+title: Trees
+date: 11Nov26
+---
+
+**Properties**
+
+- necessary and sufficient conditions ( any 1 )
+  - $max(L) < x < min(R)$ for all x, where $L$ and $R$ are subtrees
+  - inorder traversal is increasing
+  - every node satisfies it's ancestor defined bounts ( look up and get the bounds )
+  - Solve [Validate BST](https://leetcode.com/problems/validate-binary-search-tree/description/) via each
+- in a height balanced BST, root will be the median of subtree elems
+  - [Convert sorted array to BST](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/)
+
+### Misc Problems
+
+- Count/return all structurally unique BSTs [1](https://leetcode.com/problems/unique-binary-search-trees/description/) and [2](https://leetcode.com/problems/unique-binary-search-trees-ii/description/)
+  - rem that BST so left blank is different from right blank, rest you can just assign a to left and remaining to right
+  - left sub < node < right sub
