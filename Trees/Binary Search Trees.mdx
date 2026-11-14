@@ -1,0 +1,84 @@
+---
+title: Binary Search Trees
+date: 11Nov26
+---
+
+**Properties**
+
+- necessary and sufficient conditions ( any 1 )
+  - $max(L) < x < min(R)$ for all x, where $L$ and $R$ are subtrees
+    - you can call it "partition" invariant of binary tree, each node PARTITIONS ranges, it'll be useful to think of this in lca context
+  - inorder traversal is increasing
+  - every node satisfies it's ancestor defined bounts ( look up and get the bounds )
+  - Solve [Validate BST](https://leetcode.com/problems/validate-binary-search-tree/description/) via each
+- in a height balanced BST, root will be the median of subtree elems
+  - [Convert sorted array to BST](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/)
+  - [same as above but with linked list](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/description/)
+    - don't materialise the linked list to an array of course
+- flatten it via inorder works for a LOT many problems that ask for the smaller or greater to a current node
+
+The following problems are derived from properties as well but are a little bit more focused on the implemenational patterns related to all this
+
+**inorder traversal**
+
+- ( trivial ) [kth smallest element in bst](https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/)
+- without flattening, find inorder successor and predecessor
+  - from root
+  - if you are at the node ( assume you can go to parent )
+- [recover bst](https://leetcode.com/problems/recover-binary-search-tree/)
+  - note that there can be 1 OR 2 **adjancent** inversions by the swap
+  - just keep track of inversions and needed state, let a second one overwrite the first
+- [iterator](https://leetcode.com/problems/binary-search-tree-iterator/)
+  - replicate the recursion with a stack, a little bit non-trivial to implement
+    - some problems that _use_ the idea of this iterator
+    - [two sum in bst](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/)
+    - [merge two BSTs to list](https://leetcode.com/problems/all-elements-in-two-binary-search-trees/submissions/2127544036/)
+- [clostest nodes](https://leetcode.com/problems/closest-nodes-queries-in-a-binary-search-tree/)
+  - problem is asking to the previous and next element in ordered traversal
+- [add all nodes more than cur](https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/description/)
+  - similar idea as above, if you flatten it to inorder, it's really trivial
+
+**general ops**
+
+> well I would rather group theses as misc as well, these are like the bread and butter of BSTs here
+
+- [insert](https://leetcode.com/problems/insert-into-a-binary-search-tree/)
+  - you want to do the recursive one because then you easily have access to the parent via retval on recursion
+- [lca](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/)
+  - lca(p,q) is what I want; by partition invariant, if they are on the SAME side of a node then there must be a LOWER node that same range better OR one is parent of another
+  - relate to lca of binary tree here, you won't know the direction so you recurse both sides
+- [delete](https://leetcode.com/problems/delete-node-in-a-bst/description/)
+  - common line of find the node and move children won't work => 2 children moving up makes it 3 children
+  - handle children casewise ( hint: inorder successor )
+- [trim](https://leetcode.com/problems/trim-a-binary-search-tree/)
+  - [range sum](https://leetcode.com/problems/range-sum-of-bst/description/) uses the same idea except you just sum
+
+**tracking allowed ranges from parents**
+
+- [BST from preorder traversal](https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/description/)
+
+**dp like (multiple returns)**
+
+it does not become an actual dp where you store as the nodes are not repeated but the idea is that you return MULTIPLE values so that you can keep track of things
+
+- [max sum BST in bin tree](https://leetcode.com/problems/maximum-sum-bst-in-binary-tree/submissions/2042530202/)
+  - make an info struct with all that you need
+
+**theory problems**
+
+- of the four possible traversals ( pre, post, in and level order ), which ons is unique ( assuming node values are unique ) and how do you recover back the tree
+  - an inorder traversal can always be made as a line and then height balanced ( so not a line )
+  - [serialise/deserialise](https://leetcode.com/problems/serialize-and-deserialize-bst/description/)
+    - What if it's a binary tree and not BST? What if it's a tree
+
+**counting arrangements**
+
+- [ways that give same bst](https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst/description/)
+  - actually a good problem, $\binom{L+R}{L} \times f(l) \times f(r)$
+  - read above as interleaving x left ways x right ways
+
+### Misc Problems
+
+- Count/return all structurally unique BSTs [1](https://leetcode.com/problems/unique-binary-search-trees/description/) and [2](https://leetcode.com/problems/unique-binary-search-trees-ii/description/)
+  - rem that BST so left blank is different from right blank, rest you can just assign a to left and remaining to right
+  - left sub < node < right sub
